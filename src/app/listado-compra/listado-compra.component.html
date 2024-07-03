@@ -1,0 +1,30 @@
+
+<section class="nuestro-menu">
+    <h2 class="heading-blanco"><span>Nuestro delicioso</span>Menú</h2>
+
+    <div class="contenedor grid-menu">
+        <section class="menu cafe">
+            <h3>Café</h3>
+            <ul>
+                @for (item of itemsventa_cafe; track itemsventa_cafe.length) {
+                    <li> 
+                        <p>{{item.nombre}} <span> {{item.descripcion}}</span></p>
+                        <p class="precio">${{item.precio}}</p>
+                    </li>
+                }
+            </ul>
+        </section>
+
+        <section class="menu comida">
+            <h3>Comida</h3>
+            <ul>
+                @for (item of itemsventa_comida; track itemsventa_comida.length) {
+                    <li onClick=""> 
+                        <p>{{item.nombre}} <span> {{item.descripcion}}</span></p>
+                        <p class="precio">${{item.precio}}</p>
+                    </li>
+                }
+            </ul>
+        </section>
+    </div>
+</section>
