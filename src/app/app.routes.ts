@@ -7,6 +7,7 @@ import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ProcesoComponent } from './proceso/proceso.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
     {'path': '', component:PagPplComponent},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {'path': 'menu', component:MenuCompraComponent},
     {'path': 'galeria', component:GaleriaComponent},
     {'path': 'contacto', component:ContactoComponent},
-    {'path': 'admin', component:CarritoPagComponent}
+    {'path': 'admin', 'redirectTo':'admin/item', 'pathMatch':'prefix'},
+    {'path': 'admin/item', component:AdminComponent} 
 ];

@@ -1,0 +1,30 @@
+<form [formGroup]="form" (ngSubmit)="enviar()">
+    
+    <input type="text" id="nombre" formControlName="id_item" value={{id_item}} hidden [(ngModel)]="id_item" >
+    <div class="form-group">
+        <p>Nombre</p>
+        <input type="text" id="nombre" formControlName="nombre" [(ngModel)]="nombre" class="form-control">
+    </div>
+    <div class="form-group">
+        <p>Descripcion</p>
+
+        <input type="text" id="descripcion" formControlName="descripcion" [(ngModel)]="descripcion" class="form-control">
+    </div>
+    <div class="form-group">
+        <p>Precio</p>
+
+        <input type="text" id="descripcion" formControlName="precio" class="form-control" [(ngModel)]="precio">
+    </div>
+    <div class="form-group">
+        <p>Categoria</p>
+
+        <select name="categoria" id="categoria" formControlName="categoria" class="form-control">
+            @for (cat of categorias; track categoria) {
+                <option value={{cat}}>{{cat.nombre}}</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>

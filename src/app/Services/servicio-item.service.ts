@@ -10,15 +10,15 @@ export class ServicioItemService {
   private urlBack: string = 'http://localhost:90/user/'
   constructor(private http: HttpClient) { }
   getall():Observable<ItemVenta[]>{
-    return this.http.get<ItemVenta[]>(this.urlBack)
+    return this.http.get<ItemVenta[]>(this.urlBack+"imprimir_items")
   }
 
   create(item:ItemVenta):Observable<ItemVenta>{
-    return this.http.post<ItemVenta>(this.urlBack,item)
+    return this.http.post<ItemVenta>(this.urlBack+'enviarproduc',item)
   }
 
   update(item:ItemVenta):Observable<ItemVenta>{
-    return this.http.put<ItemVenta>(this.urlBack,item)
+    return this.http.put<ItemVenta>(this.urlBack+'enviarproduc',item)
   }
   delete(id:Number):Observable<ItemVenta>{
     return this.http.delete<ItemVenta>(this.urlBack+"/"+id)

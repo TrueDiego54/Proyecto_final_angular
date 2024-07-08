@@ -1,0 +1,139 @@
+<app-nav-admin (idproductoEventEmitter)="onCambiardata($event)"></app-nav-admin>
+@if(tipodata){
+    <button  type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="abrirCerrarCarrito()">Crear</button>
+    @if (mostrarform) {
+        <div class="abrir-modal animacion fadeIn">
+            <div class="modal" style="display: block;" tabindex="-1">
+                <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="abrirCerrarCarrito()" aria-label="Close"></button>
+                </div>
+
+                        <div class="modal-body">
+                            <app-form-crear-editar-item [categorias] = "categorias"></app-form-crear-editar-item>
+                        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    }
+    <div class="container">
+        <table class="table table-bordered table-striped table-hover">
+            
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                    @for (item of itemsventa; track itemsventa.length) {
+                    <tr>
+                        <td>{{item.nombre}}</td>
+                        <td> {{item.descripcion}}</td>
+                        <td>{{item.precio}}</td>
+                        <td>{{item.categoria.nombre}}</td>
+                        <td><button  class="btn btn-warning" (click)="abrireditar_item($index)">Editar</button>
+                            @if (mostrarformlist_item[$index]) {
+                                <div class="abrir-modal animacion fadeIn">
+                                    <div class="modal" style="display: block;" tabindex="-1">
+                                        <div class="modal-dialog" role="document">
+                            
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title">Carrito de Compras</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="abrireditar_item($index)" aria-label="Close"></button>
+                                        </div>
+                                            <div class="modal-body">
+                                                <app-form-crear-editar-item [nombre] = "itemsventa[$index].nombre" [descripcion] = "itemsventa[$index].descripcion" [precio] = "itemsventa[$index].precio" [categorias] = "categorias"></app-form-crear-editar-item>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td><button  class="btn btn-danger">Eliminar</button></td>
+
+                    </tr>
+                    }
+                
+            </tbody>
+        </table>
+    </div>
+}
+@if(!tipodata){
+    <button  type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="abrirCerrarCarrito()">Crear</button>
+    @if (mostrarform) {
+        <div class="abrir-modal animacion fadeIn">
+            <div class="modal" style="display: block;" tabindex="-1">
+                <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Carrito de Compras</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="abrirCerrarCarrito()" aria-label="Close"></button>
+                </div>
+
+                        <div class="modal-body">
+                            <app-form-crear-editar-categoria ></app-form-crear-editar-categoria>
+                        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    }
+    <div class="container">
+        <table class="table table-bordered table-striped table-hover">
+            
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                
+                    @for (cat of categorias; track itemsventa.length) {
+                    <tr>
+                        <td>{{cat.nombre}}</td>
+                        <td><button  class="btn btn-warning" (click)="abrireditar_cat($index)">Editar</button>
+                            @if (mostrarformlist_categoria[$index]) {
+                                <div class="abrir-modal animacion fadeIn">
+                                    <div class="modal" style="display: block;" tabindex="-1">
+                                        <div class="modal-dialog" role="document">
+                            
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title">Carrito de Compras</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="abrireditar_cat($index)" aria-label="Close"></button>
+                                        </div>
+                                            <div class="modal-body">
+                                                <app-form-crear-editar-categoria [id_categoria]="categorias[$index].id_categoria" [nombre]="categorias[$index].nombre"></app-form-crear-editar-categoria>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td><button  class="btn btn-danger">Eliminar</button></td>
+
+                    </tr>
+                    }
+                
+            </tbody>
+        </table>
+    </div>
+}
